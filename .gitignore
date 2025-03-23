@@ -2,6 +2,7 @@
 target
 
 # Local settings
+.idea/
 .soroban
 .stellar
 
