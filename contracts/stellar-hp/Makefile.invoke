@@ -1,0 +1,12 @@
+hello:
+	@echo "------------------------------"
+	@echo "Invoke hello"
+	@echo "------------------------------"
+
+	@stellar contract invoke \
+		--id stellar_hp \
+  		--source plato \
+		--network testnet \
+	  	-- \
+	  	hello \
+	  	--to PLATO
