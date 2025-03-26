@@ -1,0 +1,20 @@
+.PHONY: all upgrade_contract
+
+all: upgrade_contract
+
+upgrade_contract:
+	@echo "----------------------------------------"
+	@echo "Build Upload Upgrade Contract WASM"
+	@echo "----------------------------------------"
+	@stellar contract build
+	@cd ../../ && UPGRADED_WASM_HASH=$$(stellar contract upload \
+  		--source contract_admin \
+		--network testnet \
+	  	--wasm target/wasm32-unknown-unknown/release/stellar_hp.wasm) \
+	&& stellar contract invoke \
+       	--id stellar_hp \
+       	--source contract_admin \
+       	--network testnet \
+       	-- \
+       	upgrade \
+       	--new_wasm_hash $$UPGRADED_WASM_HASH

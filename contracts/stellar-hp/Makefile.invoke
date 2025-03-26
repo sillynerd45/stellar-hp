@@ -5,21 +5,34 @@ hello:
 
 	@stellar contract invoke \
 		--id stellar_hp \
-  		--source plato \
+  		--source benoa \
 		--network testnet \
 	  	-- \
 	  	hello \
-	  	--to PLATO
+	  	--to BENOA
 
 hello_admin:
 	@echo "------------------------------"
-	@echo "Invoke hello"
+	@echo "Invoke hello_admin"
 	@echo "------------------------------"
 
 	@stellar contract invoke \
 		--id stellar_hp \
-  		--source ares \
+  		--source contract_admin \
 		--network testnet \
 	  	-- \
 	  	hello_admin \
 	  	--to ARES
+
+hello_upgraded:
+	@echo "------------------------------"
+	@echo "Invoke hello_upgraded"
+	@echo "------------------------------"
+
+	@stellar contract invoke \
+		--id stellar_hp \
+  		--source benoa \
+		--network testnet \
+	  	-- \
+	  	hello_upgraded \
+	  	--to BENOA

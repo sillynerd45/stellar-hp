@@ -1,6 +1,6 @@
 #![no_std]
 use crate::enums::ContractKey;
-use soroban_sdk::{contract, contractimpl, vec, Address, Env, String, Vec};
+use soroban_sdk::{contract, contractimpl, vec, Address, BytesN, Env, String, Vec};
 
 #[contract]
 pub struct Contract;
@@ -22,15 +22,30 @@ impl Contract {
             .set(&ContractKey::Admin, &stellar_hp_admin);
     }
 
+    pub fn upgrade(env: Env, new_wasm_hash: BytesN<32>) {
+        let admin: Address = env.storage().instance().get(&ContractKey::Admin).unwrap();
+        admin.require_auth();
+
+        env.deployer().update_current_contract_wasm(new_wasm_hash);
+    }
+
     pub fn hello(env: Env, to: String) -> Vec<String> {
-        vec![&env, String::from_str(&env, "Hello"), to]
+        vec![&env, String::from_str(&env, "Basic Hello"), to]
     }
 
     pub fn hello_admin(env: Env, to: String) -> Vec<String> {
         let admin: Address = env.storage().instance().get(&ContractKey::Admin).unwrap();
         admin.require_auth();
 
-        vec![&env, String::from_str(&env, "Admin saying hello"), to]
+        vec![&env, String::from_str(&env, "Admin saying : Hello"), to]
+    }
+
+    pub fn hello_upgraded(env: Env, to: String) -> Vec<String> {
+        vec![
+            &env,
+            String::from_str(&env, "Hello from Upgraded Contract"),
+            to,
+        ]
     }
 }
 
