@@ -10,3 +10,16 @@ hello:
 	  	-- \
 	  	hello \
 	  	--to PLATO
+
+hello_admin:
+	@echo "------------------------------"
+	@echo "Invoke hello"
+	@echo "------------------------------"
+
+	@stellar contract invoke \
+		--id stellar_hp \
+  		--source ares \
+		--network testnet \
+	  	-- \
+	  	hello_admin \
+	  	--to ARES

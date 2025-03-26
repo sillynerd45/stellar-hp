@@ -1,5 +1,6 @@
 #![no_std]
-use soroban_sdk::{contract, contractimpl, vec, Env, String, Vec};
+use crate::enums::ContractKey;
+use soroban_sdk::{contract, contractimpl, vec, Address, Env, String, Vec};
 
 #[contract]
 pub struct Contract;
@@ -15,9 +16,23 @@ pub struct Contract;
 // <https://developers.stellar.org/docs/build/smart-contracts/overview>.
 #[contractimpl]
 impl Contract {
+    pub fn __constructor(env: Env, stellar_hp_admin: Address) {
+        env.storage()
+            .instance()
+            .set(&ContractKey::Admin, &stellar_hp_admin);
+    }
+
     pub fn hello(env: Env, to: String) -> Vec<String> {
         vec![&env, String::from_str(&env, "Hello"), to]
     }
+
+    pub fn hello_admin(env: Env, to: String) -> Vec<String> {
+        let admin: Address = env.storage().instance().get(&ContractKey::Admin).unwrap();
+        admin.require_auth();
+
+        vec![&env, String::from_str(&env, "Admin saying hello"), to]
+    }
 }
 
+mod enums;
 mod test;

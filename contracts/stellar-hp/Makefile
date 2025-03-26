@@ -1,10 +1,10 @@
 include Makefile.invoke
 
-default: build
+default: deploy
 
 all: test
 
-test: build
+test: deploy
 	cargo test
 
 build:
@@ -18,9 +18,9 @@ build:
     fi
 	@cd ../../ && ls -l target/wasm32-unknown-unknown/release/*.wasm
 
-install: build
+deploy: build
 	@echo "------------------------------"
-	@echo "Installing Stellar Contract"
+	@echo "Deploying Stellar Contract"
 	@echo "------------------------------"
 	@cd ../../ && stellar contract deploy \
 		--wasm target/wasm32-unknown-unknown/release/stellar_hp.wasm \
@@ -28,7 +28,7 @@ install: build
         --network testnet \
         --alias stellar_hp
 	@if [ $$? -ne 0 ]; then \
-        echo "Stellar Contract Install failed"; \
+        echo "Stellar Contract Deploy failed"; \
         exit 1; \
     fi
 
