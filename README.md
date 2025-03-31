@@ -99,3 +99,7 @@ user-controlled health data management. The system consists of the following com
    ```
 
    The frontend will be accessible at `http://localhost:5000`.
+
+**Stellar Health Point Contract link on Stellar Expert (Testnet):**
+
+[https://stellar.expert/explorer/testnet/contract/CCRGHTR55IXRJVLJTJ5RJ7JVSWH3ETTNBYJPW2MTVROMKYVJX5X6IFSK](https://stellar.expert/explorer/testnet/contract/CCRGHTR55IXRJVLJTJ5RJ7JVSWH3ETTNBYJPW2MTVROMKYVJX5X6IFSK)
