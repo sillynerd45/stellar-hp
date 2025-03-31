@@ -2,19 +2,24 @@
 
 ## Project Overview
 
-Stellar Health Point is a user-centric platform built on Soroban that empowers
-individuals to securely log, store, and control their personal health data. It aims to address the privacy concerns,
-lack of control, and data silos prevalent in traditional healthcare systems.
+Stellar Health Point is a user-centric platform built on Soroban that empowers individuals to securely log, store, and
+control their personal health data. It aims to address the privacy concerns, lack of control, and data silos prevalent
+in traditional healthcare systems.
 
 **Problem:** Traditional healthcare systems often lack transparency regarding data handling, leave individuals with
 little control over their health data, and create isolated data silos that hinder personalized care. Concerns about data
-breaches, unauthorized access, and the monetization of health information erode trust in these systems.
+breaches, unauthorized access, and the monetization of health information erode trust in these systems. Furthermore,
+access to specialized healthcare can be limited by geographical constraints and inefficient payment systems.
 
 **Solution:** Stellar Health Point leverages Soroban's robust smart contract capabilities, combined with encryption, to
 provide a secure, private, and user-controlled health data ecosystem. User health data is encrypted before being stored
 on Soroban, ensuring that only the user holds the decryption key. This architecture grants individuals complete
 ownership and control over their data, allowing them to selectively share it with healthcare providers or researchers as
 they deem appropriate.
+
+Moreover, Stellar Health Point facilitates global access to healthcare. For example, a patient
+in Cape Town can securely consult a doctor in California and settle the bill quickly and reliably thanks to the robust
+Stellar network and secure Soroban platform, all while easily and securely sharing necessary health data.
 
 ## Technical Details
 
