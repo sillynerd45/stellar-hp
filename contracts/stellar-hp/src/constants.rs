@@ -1,0 +1,1 @@
+pub const ONE_MONTH_TTL: u32 = 12 * 60 * 24 * 30;

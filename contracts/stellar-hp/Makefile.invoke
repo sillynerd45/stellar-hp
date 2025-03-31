@@ -1,6 +1,44 @@
-hello:
+ sign_up:
 	@echo "------------------------------"
-	@echo "Invoke hello"
+	@echo "Invoke sign_up"
+	@echo "------------------------------"
+
+	@stellar contract invoke \
+		--id stellar_hp \
+  		--source plato \
+		--network testnet \
+	  	-- \
+	  	sign_up \
+	  	--user GB3NWHOV6POCYEVH6B74V5KM6A22T4J36Z5EMEHHGP6SGTMCD7SEVQGM \
+	  	--profile '<ENCRYPTED PROFILE STRING>' \
+	  	--account_type 1 \
+	  	--log_hash 32 \
+	  	--worker_name '<HEALTH WORKER NAME>'
+
+insert_log:
+	@echo "------------------------------"
+	@echo "Invoke insert_log"
+	@echo "------------------------------"
+
+	@stellar contract invoke \
+		--id stellar_hp \
+  		--source plato \
+		--network testnet \
+	  	-- \
+	  	insert_log \
+	  	--user GB3NWHOV6POCYEVH6B74V5KM6A22T4J36Z5EMEHHGP6SGTMCD7SEVQGM \
+	  	--year 2025 \
+	  	--month 3 \
+	  	--date 27 \
+	  	--log_type 0 \
+	  	--log_value '<ENCRYPTED LOG STRING>' \
+	  	--year_hash "P5w1NZJAhYyhVFccfDon9NbAjDPPhu" \
+	  	--month_hash "8V9M2fA5Q0w72RkoMaejdtFYQetnCo" \
+	  	--date_hash "NDhg711kZCjx8VxNbZKpNYF2zghK6e"
+
+read_all_log:
+	@echo "------------------------------"
+	@echo "Invoke read_all_log"
 	@echo "------------------------------"
 
 	@stellar contract invoke \
@@ -8,31 +46,5 @@ hello:
   		--source benoa \
 		--network testnet \
 	  	-- \
-	  	hello \
-	  	--to BENOA
-
-hello_admin:
-	@echo "------------------------------"
-	@echo "Invoke hello_admin"
-	@echo "------------------------------"
-
-	@stellar contract invoke \
-		--id stellar_hp \
-  		--source contract_admin \
-		--network testnet \
-	  	-- \
-	  	hello_admin \
-	  	--to ARES
-
-hello_upgraded:
-	@echo "------------------------------"
-	@echo "Invoke hello_upgraded"
-	@echo "------------------------------"
-
-	@stellar contract invoke \
-		--id stellar_hp \
-  		--source benoa \
-		--network testnet \
-	  	-- \
-	  	hello_upgraded \
-	  	--to BENOA
+	  	read_all_log \
+	  	--user GDE5KDWG3OA3BBDPOWVYMXUAQP6X7AY2XIBCUFPK6WM6U5RESPRWMMKQ
